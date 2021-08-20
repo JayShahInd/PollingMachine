@@ -1,0 +1,66 @@
+
+<div id="content"> 
+
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Create your Poll</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="pollForm" #myForm="ngForm" fxLayout="column">
+      <h3>Question</h3>
+      <mat-form-field appearance="outline">
+        <textarea matInput formControlName="Topic" required [maxlength]="maxCharLength"></textarea>
+        <mat-hint *ngIf="!PollControls.Topic.value">0/{{maxCharLength}} charecters left</mat-hint>
+        <mat-hint *ngIf="PollControls.Topic.value">{{PollControls.Topic.value.length}}/{{maxCharLength}} charecters left</mat-hint>
+
+        <mat-error *ngIf="PollControls.Topic.errors">
+          <div *ngIf="PollControls.Topic.errors.required">Required</div>
+        </mat-error>
+      </mat-form-field>
+      <h3>Answers</h3>
+      <div formArrayName="Options">
+        <div *ngFor="let option of PollControls.Options['controls']; let i=index">
+          <div [formGroupName]="i">
+          <mat-form-field appearance="outline">
+            <mat-label>Option {{i+1}}</mat-label>
+            <input formControlName="Value" matInput required [maxlength]="maxCharLength">
+            <mat-error *ngIf="PollControls.Topic.errors">
+              <div *ngIf="PollControls.Options['controls'][i]['controls'].Value.errors?.required">Required</div>
+            </mat-error>
+            <button class="icon-button" [disabled]="PollControls.Options['controls'][i]['controls'].Value.errors?.required" *ngIf="i == PollControls.Options['controls'].length-1 && i < maxPollOptions-1" mat-icon-button
+              matSuffix (click)="addPollOption()">
+              <mat-icon>add_circle_outline</mat-icon>
+            </button>
+            <button class="icon-button" mat-icon-button matSuffix *ngIf="PollControls.Options['controls'].length != 1"
+              (click)="removePollOption(i)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="alert alert-warning">
+      {{PollControls.Options['controls'].length}} of {{maxPollOptions}} possible answers
+    </div>
+    <!-- <div class="alert alert-danger" *ngIf="minPollOpionError || PollControls.Options['controls'].length < minPollOptions">
+      Minimum {{minPollOptions}} answers required.
+    </div> -->
+     <div class="alert alert-danger" *ngIf="minPollOpionError">
+      Minimum {{minPollOptions}} answers required.
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- {{PollForm.invalid}} {{PollControls.Options['controls'].length < minPollOptions}} {{PollControls.Options['controls'].length}} {{minPollOptions}} -->
+    <button *ngIf="!setForEdit" mat-raised-button color="primary" (click)="savePoll()"
+      [disabled]="PollControls.Options['controls'].length < minPollOptions">
+      <span >Create</span>
+    </button>
+    <button *ngIf="setForEdit" mat-raised-button color="primary" (click)="updatePoll()"
+      [disabled]="PollControls.Options['controls'].length < minPollOptions">
+      <span >Edit</span>
+    </button>
+    <button mat-raised-button color="warn" (click)="resetPoll()">Reset</button>
+  </mat-card-actions>
+</mat-card>
+</div>  

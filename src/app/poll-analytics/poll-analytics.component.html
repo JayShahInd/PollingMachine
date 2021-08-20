@@ -1,0 +1,28 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Poll Analytics</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container style="display: block;" *ngIf="activePoll">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+        [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="chartColors" [legend]="pieChartLegend">
+      </canvas>
+
+      <canvas baseChart class="margin-top" [datasets]="barChartData" [labels]="barChartLabels"
+        [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [colors]="chartColors"
+        [chartType]="barChartType">
+      </canvas>
+
+    </ng-container>
+    <ng-container *ngIf="pollData.length == 0 && activePoll" >
+      <div class="alert alert-warning">
+        No votes been casted.
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!activePoll" >
+      <div class="alert alert-warning">
+        No active Poll. 
+      </div>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
