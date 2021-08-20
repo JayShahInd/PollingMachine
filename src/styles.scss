@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-card-header-text {
+   margin: 0px !important;
+}
+.mat-grid-tile .mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+    // height: 100%;
+    color: #dadada;
+    position: relative !important;
+    display: block !important;
+ }
+ .mat-card {
+     padding: 5px;
+     margin: 2px;
+    //  height: 100% !important;
+ } 
+
+ .mat-h3, .mat-subheading-2, .mat-typography h3 {
+    margin: 10px 0px 5px 0px !important;
+}
+
+.alert-danger {
+    background-color: #f44336; /* Red */
+}
+
+.alert-warning {
+    background-color:skyblue; /* Red */
+}
+.alert-success {
+    background-color: #36f456;  
+} 
+.alert{
+    padding: 5px;
+    color: white;
+    font-weight: 500;
+    margin: 5px 0px;
+    border-radius: 3px;;
+}
+
+.icon-button{
+    display: unset !important;
+}
+
+.mat-card-header-text {
+    color: #44a6c6 !important;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;                        /*  changed  */
+    border: 3px;// solid black;
+    box-sizing: border-box;               /*  added, to avoid scroll and make
+                                              border size be included in set height  */
+}
+
+.card:hover {
+    background-color: #f8fcfd;
+  }
+
+.mat-card-actions{
+    margin-left: 0px !important;
+}
+
+.mat-form-field{
+    width:100% !important;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row{
+    color: #cbe6ef;
+    background-color: #1e5262;
+}

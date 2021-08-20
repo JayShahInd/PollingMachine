@@ -1,0 +1,25 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Cast your Vote</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="activePoll">
+      <label class="poll-question" id="example-radio-group-label">{{activePoll.topic}}</label>
+    <mat-radio-group aria-labelledby="example-radio-group-label" color="primary" class="example-radio-group"
+      [(ngModel)]="userAnswer">
+      <mat-radio-button class="example-radio-button" *ngFor="let answer of activePoll.options" [value]="answer.Key">
+        {{answer.Value}}
+      </mat-radio-button>
+    </mat-radio-group>
+    </ng-container>
+    <ng-container *ngIf="!activePoll" >
+      <div class="alert alert-warning">
+        No active Poll. 
+      </div>
+    </ng-container>
+  </mat-card-content>
+  <mat-card-actions  *ngIf="activePoll" >
+    <button mat-raised-button color="primary" (click)="CastVote()"
+      [disabled]="!userAnswer">Post</button>
+  </mat-card-actions>
+</mat-card>
