@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Poll } from '../models/poll';
-import { Vote } from '../models/Votes';
+import { Vote } from '../models/votes';
 
 @Injectable({
   providedIn: 'root'

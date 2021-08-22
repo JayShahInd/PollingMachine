@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
 import { Poll } from '../shared/models/poll';
-import { Vote } from '../shared/models/Votes';
+import { Vote } from '../shared/models/votes';
 import { PollService } from '../shared/services/poll.service';
 
 @Component({
