@@ -6,7 +6,11 @@ For a demo, it is not linked with diffrent account and role type and though can 
 
 Project has been created with 3 components (one to create update reset, second to respond and third to see live analytics) and few test cases.
 
-For a analytics, project is using NG CHART2 3rd party library.
+For a analytics, project is using NG2 CHART 3rd party library.
+
+For a hosting, Azure App service plan is used.
+
+For devops, CI CD has been implmented with Github to main branch.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0-next.0.
 
